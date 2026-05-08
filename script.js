@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const day = document.getElementById("booking-day").value;
       const time = document.getElementById("booking-time").value;
       const notes = document.getElementById("booking-notes").value.trim();
+      const tip = parseFloat(document.getElementById("booking-tip").value) || 0;
 
       if (!name || !car || !wash || !day || !time) {
         bookingMessage.textContent = "Please fill in all required fields.";
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
           day,
           time,
           notes,
+          tip,
           created: Date.now()
         });
 
