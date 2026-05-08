@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scrub Dusters – Premium Car Wash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">
+    <div class="sponge-icon"></div>
+    <span>Scrub Dusters</span>
+  </div>
+  <nav>
+    <a href="index.html#home">Home</a>
+    <a href="index.html#booking">Book</a>
+    <a href="carwashes.html">Car Washes</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="shop.html">Shop</a>
+    <a href="payments.html">Payments</a>
+    <a href="policies.html">Policies</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Premium car care, wherever you are.</h1>
+      <p>Animal‑safe soaps, careful cleaning, and flexible booking for your car.</p>
+      <div class="hero-buttons">
+        <a href="#booking" class="btn primary">Book a Slot</a>
+        <a href="carwashes.html" class="btn secondary">Choose a Wash</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking" class="section">
+    <h2>Book a time slot</h2>
+    <p>Select a day and time that suits you.</p>
+
+    <form id="booking-form" class="card">
+      <label>
+        Name
+        <input type="text" id="booking-name" required>
+      </label>
+
+      <label>
+        Email
+        <input type="email" id="booking-email" required>
+      </label>
+
+      <label>
+        Day
+        <select id="booking-day" required>
+          <option value="">Select a day</option>
+          <option value="monday">Monday</option>
+          <option value="tuesday">Tuesday</option>
+          <option value="wednesday">Wednesday</option>
+          <option value="thursday">Thursday</option>
+          <option value="friday">Friday</option>
+          <option value="saturday">Saturday</option>
+          <option value="sunday">Sunday</option>
+        </select>
+      </label>
+
+      <label>
+        Time
+        <select id="booking-time" required>
+          <option value="">Select a time</option>
+        </select>
+      </label>
+
+      <label>
+        Notes (car type, location, wash type, etc.)
+        <textarea id="booking-notes" rows="3"></textarea>
+      </label>
+
+      <button type="submit" class="btn primary">Confirm Booking</button>
+      <p id="booking-message" class="form-message"></p>
+    </form>
+  </section>
+
+  <!-- PRICES -->
+  <section id="prices" class="section alt">
+    <h2>Prices</h2>
+    <p>Prices depend on car size, distance, and wash type.</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>Small car</h3>
+        <p>City cars, hatchbacks.</p>
+        <p class="price">From £25</p>
+      </div>
+      <div class="card">
+        <h3>Medium car</h3>
+        <p>Family cars, small SUVs.</p>
+        <p class="price">From £35</p>
+      </div>
+      <div class="card">
+        <h3>Large car</h3>
+        <p>Large SUVs, 4x4s, vans.</p>
+        <p class="price">From £45</p>
+      </div>
+      <div class="card">
+        <h3>Distance & extras</h3>
+        <p>Travel and extra effort based on distance and condition.</p>
+        <p class="price">Up to ~£60 total</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips" class="section">
+    <h2>Leave a tip</h2>
+    <p>Thank you for supporting Scrub Dusters. Tips reward extra effort.</p>
+
+    <div class="card tips-card">
+      <p><strong>Secure Starling Bank payment:</strong> All payments are handled safely through Starling.</p>
+
+      <div class="tip-buttons">
+        <a class="btn secondary" href="https://settleup.starlingbank.com/cycle-vote-twirl" target="_blank">£2</a>
+        <a class="btn secondary" href="https://settleup.starlingbank.com/cycle-vote-twirl" target="_blank">£5</a>
+        <a class="btn secondary" href="https://settleup.starlingbank.com/cycle-vote-twirl" target="_blank">£10</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section alt">
+    <h2>Contact & suggestion box</h2>
+    <p>Email: scrubdusterswebsite@gmail.com</p>
+
+    <form id="contact-form" class="card">
+      <label>
+        Name
+        <input type="text" id="contact-name" required>
+      </label>
+
+      <label>
+        Email
+        <input type="email" id="contact-email" required>
+      </label>
+
+      <label>
+        Subject
+        <input type="text" id="contact-subject" placeholder="Job enquiry, car wash, suggestion..." required>
+      </label>
+
+      <label>
+        Message
+        <textarea id="contact-message" rows="4" required></textarea>
+      </label>
+
+      <button type="submit" class="btn primary">Send message</button>
+      <p id="contact-message-status" class="form-message"></p>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Scrub Dusters &copy; <span id="year"></span> · Premium car care</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
