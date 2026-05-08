@@ -15,21 +15,21 @@
     <span>Scrub Dusters</span>
   </div>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#booking">Book</a>
+    <a href="index.html#home">Home</a>
+    <a href="index.html#booking">Book</a>
     <a href="carwashes.html">Car Washes</a>
     <a href="reviews.html">Reviews</a>
     <a href="payments.html">Payments</a>
     <a href="policies.html">Policies</a>
     <a href="about.html">About</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html#contact">Contact</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
   <div class="hero-content">
     <h1>Scrub Dusters</h1>
-    <p>Your local car wash service with simple pricing and clean results.</p>
+    <p>Local car wash service with simple pricing and clean results.</p>
     <div class="hero-buttons">
       <a class="btn primary" href="#booking">Book a Wash</a>
       <a class="btn secondary" href="carwashes.html">View Services</a>
@@ -39,9 +39,9 @@
 
 <section class="section" id="booking">
   <h2>Book a Car Wash</h2>
-  <p>Choose your wash, day and time. This now saves to your real database.</p>
+  <p>Choose your wash, day and time. Bookings are saved to a real system.</p>
 
-  <form id="booking-form">
+  <form id="booking-form" class="card">
     <label>
       Name
       <input id="booking-name" required>
@@ -96,12 +96,16 @@
 
 <section class="section" id="contact">
   <h2>Contact</h2>
-  <p>Message us with any questions.</p>
+  <p>Use this form for general questions or special requests.</p>
 
-  <form id="contact-form">
+  <form id="contact-form" class="card">
+    <label>
+      Your Name
+      <input id="contact-name" required>
+    </label>
     <label>
       Your Message
-      <textarea required></textarea>
+      <textarea id="contact-message" required></textarea>
     </label>
     <button class="btn primary" type="submit">Send</button>
     <p id="contact-message-status" class="form-message"></p>
