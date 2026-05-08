@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <header class="site-header">
   <div class="logo">
     <div class="sponge-icon"></div>
@@ -16,61 +17,33 @@
     <a href="index.html#home">Home</a>
     <a href="index.html#booking">Book</a>
     <a href="carwashes.html">Car Washes</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="shop.html">Shop</a>
+    <a href="reviews.html" class="active">Reviews</a>
     <a href="payments.html">Payments</a>
     <a href="policies.html">Policies</a>
     <a href="about.html">About</a>
-    <a href="index.html#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero small-hero">
-  <div class="hero-content">
-    <h1>Customer reviews</h1>
-    <p>See what people think of Scrub Dusters.</p>
-  </div>
-</section>
-
 <section class="section">
-  <div class="cards-grid">
+  <h1>Customer Reviews</h1>
+  <div class="card-grid">
     <div class="card">
-      <h3>“Amazing job!”</h3>
-      <p>“My car looked brand new after the wash. Super friendly and careful.”</p>
-      <p class="meta">– Example review</p>
+      <p>“Car looked brand new after the deep clean. Friendly and on time.”</p>
+      <p class="tag">– Jamie</p>
     </div>
     <div class="card">
-      <h3>“Great attention to detail”</h3>
-      <p>“They took extra time on the interior and it really shows.”</p>
-      <p class="meta">– Example review</p>
+      <p>“Simple prices, easy booking, no hassle. Will use again.”</p>
+      <p class="tag">– Taylor</p>
     </div>
     <div class="card">
-      <h3>“Worth every penny”</h3>
-      <p>“Easy booking, clear prices, and a really good clean.”</p>
-      <p class="meta">– Example review</p>
+      <p>“Turned up when they said they would and did a proper job.”</p>
+      <p class="tag">– Morgan</p>
     </div>
-  </div>
-
-  <div class="card" style="margin-top:2rem;">
-    <h2>Leave a review</h2>
-    <p>This is a demo form – it doesn’t save data yet.</p>
-    <form id="review-form">
-      <label>
-        Name
-        <input type="text" id="review-name" required>
-      </label>
-      <label>
-        Your review
-        <textarea id="review-text" rows="3" required></textarea>
-      </label>
-      <button type="submit" class="btn primary">Submit review</button>
-      <p id="review-message" class="form-message"></p>
-    </form>
   </div>
 </section>
 
 <footer class="site-footer">
-  <p>Scrub Dusters &copy; <span id="year"></span></p>
+  <p>Scrub Dusters © <span id="year"></span></p>
 </footer>
 
 <script src="script.js"></script>
