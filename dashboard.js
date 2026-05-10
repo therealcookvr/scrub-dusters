@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   db.collection("bookings")
     .orderBy("created", "desc")
     .onSnapshot((snapshot) => {
-      const bookings = snapshot.docs.map(doc => doc.data());
+      const bookings = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
       totalEl.textContent = bookings.length;
 
@@ -36,15 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
       tipsEl.textContent = "£" + tipsTotal.toFixed(2);
 
       tableBody.innerHTML = "";
-      if (bookings.length === 0) {
-        const row = document.createElement("tr");
-        const cell = document.createElement("td");
-        cell.colSpan = 7;
-        cell.textContent = "No bookings yet.";
-        row.appendChild(cell);
-        tableBody.appendChild(row);
-        return;
-      }
 
       bookings.forEach(b => {
         const row = document.createElement("tr");
@@ -52,9 +43,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const createdDate = new Date(b.created);
         const createdStr = createdDate.toLocaleString();
 
-        [b.name, b.car, b.wash, b.day, b.time, `£${b.tip || 0}`, createdStr].forEach(val => {
+        [
+          b.name,
+          b.car,
+          b.wash,
+          b.day,
+          b.time,
+          b.paid ? "Yes" : "No",
+          `£${b.tip || 0}`,
+          createdStr
+        ].forEach(val => {
           const td = document.createElement("td");
-          td.textContent = val || "";
+          td.textContent = val;
           row.appendChild(td);
         });
 
