@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const bookingForm = document.getElementById("booking-form");
   const bookingMessage = document.getElementById("booking-message");
+  const payNowLink = document.getElementById("pay-now-link");
+
   const daySelect = document.getElementById("booking-day");
   const timeSelect = document.getElementById("booking-time");
   const baseTimes = ["09:00", "10:30", "12:00", "13:30", "15:00", "16:30"];
@@ -43,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        await db.collection("bookings").add({
+        const docRef = await db.collection("bookings").add({
           name,
           car,
           wash,
@@ -51,10 +53,14 @@ document.addEventListener("DOMContentLoaded", () => {
           time,
           notes,
           tip,
+          paid: false,
+          paymentLink: "https://settleup.starlingbank.com/cycle-vote-twirl",
           created: Date.now()
         });
 
-        bookingMessage.textContent = "Booking saved!";
+        bookingMessage.textContent = "Booking saved! You can now pay online.";
+        payNowLink.style.display = "inline-flex";
+
         bookingForm.reset();
         timeSelect.innerHTML = '<option value="">Select time</option>';
       } catch (err) {
