@@ -29,34 +29,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Load available times based on day + Firestore
   daySelect.addEventListener("change", async () => {
-    const day = daySelect.value;
+    const day = daySelect.value.trim();
     timeSelect.innerHTML = '<option value="">Select time</option>';
 
+    if (!day) return;
+
+    // Choose correct time list
     let times = ["Saturday", "Sunday"].includes(day)
       ? weekendTimes
       : weekdayTimes;
 
-    // Fetch booked times for this day
-    const snapshot = await db.collection("bookings")
-      .where("day", "==", day)
-      .get();
+    try {
+      // Fetch booked times for this day
+      const snapshot = await db.collection("bookings")
+        .where("day", "==", day)
+        .get();
 
-    const bookedTimes = snapshot.docs.map(doc => doc.data().time);
+      const bookedTimes = snapshot.docs.map(doc => doc.data().time);
 
-    // Filter out booked times
-    const availableTimes = times.filter(t => !bookedTimes.includes(t));
+      // Filter out booked times
+      const availableTimes = times.filter(t => !bookedTimes.includes(t));
 
-    availableTimes.forEach(t => {
-      const opt = document.createElement("option");
-      opt.value = t;
-      opt.textContent = t;
-      timeSelect.appendChild(opt);
-    });
+      // If all times are booked, show message
+      if (availableTimes.length === 0) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "No times available";
+        timeSelect.appendChild(opt);
+        return;
+      }
 
-    if (availableTimes.length === 0) {
+      // Add available times
+      availableTimes.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = t;
+        opt.textContent = t;
+        timeSelect.appendChild(opt);
+      });
+
+    } catch (err) {
+      console.error("Time load error:", err);
       const opt = document.createElement("option");
       opt.value = "";
-      opt.textContent = "No times available";
+      opt.textContent = "Error loading times";
       timeSelect.appendChild(opt);
     }
   });
@@ -68,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("booking-name").value.trim();
     const car = document.getElementById("booking-car").value.trim();
     const wash = document.getElementById("booking-wash").value;
-    const day = document.getElementById("booking-day").value;
+    const day = document.getElementById("booking-day").value.trim();
     const time = document.getElementById("booking-time").value;
     const notes = document.getElementById("booking-notes").value.trim();
     const tip = parseFloat(document.getElementById("booking-tip").value) || 0;
@@ -79,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
+      // Save booking
       await db.collection("bookings").add({
         name,
         car,
@@ -97,9 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       bookingForm.reset();
       timeSelect.innerHTML = '<option value="">Select time</option>';
+
     } catch (err) {
       console.error("Save error:", err);
       bookingMessage.textContent = "Error saving booking. Check console.";
     }
   });
 });
+
