@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
         bookingForm.reset();
         timeSelect.innerHTML = '<option value="">Select time</option>';
       } catch (err) {
-        bookingMessage.textContent = "Error saving booking. Try again.";
+        console.error("Save error:", err);
+        bookingMessage.textContent = "Error saving booking. Check console and Firestore setup.";
       }
     });
   }
