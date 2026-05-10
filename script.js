@@ -19,6 +19,14 @@ const weekendTimes = [
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // Wait until Firebase is ready
+  if (typeof firebase === "undefined" || typeof db === "undefined") {
+    console.error("Firebase not ready — script stopped.");
+    return;
+  }
+
+  console.log("Firebase loaded, script running.");
+
   // Year footer
   const yearSpans = document.querySelectorAll("#year");
   yearSpans.forEach(span => (span.textContent = new Date().getFullYear()));
@@ -36,23 +44,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!day) return;
 
-    // Choose correct time list
     let times = ["Saturday", "Sunday"].includes(day)
       ? weekendTimes
       : weekdayTimes;
 
     try {
-      // Fetch booked times for this day
       const snapshot = await db.collection("bookings")
         .where("day", "==", day)
         .get();
 
       const bookedTimes = snapshot.docs.map(doc => doc.data().time);
 
-      // Filter out booked times
       const availableTimes = times.filter(t => !bookedTimes.includes(t));
 
-      // If all times are booked, show message
       if (availableTimes.length === 0) {
         const opt = document.createElement("option");
         opt.value = "";
@@ -61,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Add available times
       availableTimes.forEach(t => {
         const opt = document.createElement("option");
         opt.value = t;
@@ -82,6 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
   bookingForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    console.log("FORM SUBMITTED");
+
     const name = document.getElementById("booking-name").value.trim();
     const car = document.getElementById("booking-car").value.trim();
     const wash = document.getElementById("booking-wash").value;
@@ -96,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      // Save booking
       await db.collection("bookings").add({
         name,
         car,
