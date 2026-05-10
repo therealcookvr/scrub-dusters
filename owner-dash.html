@@ -72,10 +72,8 @@
   </div>
 </section>
 
-<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-
 
 <script>
   const firebaseConfig = {
@@ -87,10 +85,11 @@
     appId: "1:947760364992:web:1e42455cb5455bfe01dc25"
   };
 
-  const app = firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
 
 <script src="dashboard.js"></script>
+
 </body>
 </html>
