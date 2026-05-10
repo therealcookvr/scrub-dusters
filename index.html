@@ -21,6 +21,7 @@
     <a href="payments.html">Payments</a>
     <a href="policies.html">Policies</a>
     <a href="about.html">About</a>
+    <a href="owner-dashboard-secret.html">Dashboard</a>
   </nav>
 </header>
 
@@ -37,7 +38,6 @@
 
 <section class="section" id="booking">
   <h2>Book a Car Wash</h2>
-  <p>Choose your wash, day and time. You can add a tip and pay online after booking.</p>
 
   <form id="booking-form" class="card">
     <label>
@@ -54,9 +54,9 @@
       Wash Type
       <select id="booking-wash" required>
         <option value="">Select wash</option>
-        <option value="Basic Wash">Basic Wash — £15</option>
-        <option value="Wash & Wax">Wash & Wax — £20</option>
-        <option value="Deep Clean">Deep Clean — Interior & Exterior — £27</option>
+        <option value="Basic Wash">Basic Wash — £8</option>
+        <option value="Wash & Wax">Wash & Wax — £15</option>
+        <option value="Deep Clean">Deep Clean — £28</option>
       </select>
     </label>
 
@@ -75,27 +75,11 @@
     </label>
 
     <label>
-      Time — Weekdays
-      <select id="booking-time-weekday" optional>
-        <option value="">Select time — weekdays</option>
-        <option>4.30pm</option>
-        <option>5.45pm</option>
-        <option>6.50pm</option>
+      Time
+      <select id="booking-time" required>
+        <option value="">Select time</option>
       </select>
     </label>
-
-    <label>
-      Time — Weekends
-      <select id="booking-time-weekend" optional>
-     <option>9.30am</option>
-     <option>10.45am</option>
-     <option>11.50am</option>
-     <option>12.55pm</option>
-     <option>2pm</option>
-     <option>3.20pm</option>
-     <option>4.30pm</option>
-     <option>5.45pm</option>
-     <option>6.50pm</option>
 
     <label>
       Tip (optional)
@@ -117,29 +101,11 @@
   </form>
 </section>
 
-<section class="section" id="contact">
-  <h2>Contact</h2>
-  <p>Questions or special requests — drop us a message.</p>
-
-  <form id="contact-form" class="card">
-    <label>
-      Your Name
-      <input id="contact-name" required>
-    </label>
-    <label>
-      Your Message
-      <textarea id="contact-message" required></textarea>
-    </label>
-    <button class="btn primary" type="submit">Send</button>
-    <p id="contact-message-status" class="form-message"></p>
-  </form>
-</section>
-
 <footer class="site-footer">
   <p>Scrub Dusters © <span id="year"></span></p>
 </footer>
 
-<!-- Firebase SDKs -->
+<!-- Firebase v8 (REQUIRED) -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
@@ -153,10 +119,11 @@
     appId: "1:947760364992:web:1e42455cb5455bfe01dc25"
   };
 
-  const app = firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
 
 <script src="script.js"></script>
 </body>
 </html>
+
