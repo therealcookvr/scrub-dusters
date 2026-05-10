@@ -1,145 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Scrub Dusters – Car Wash Service</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
+<form id="booking-form" class="card">
+  <label>
+    Name
+    <input id="booking-name" required>
+  </label>
 
-<body>
+  <label>
+    Car Type
+    <input id="booking-car" required>
+  </label>
 
-<header class="site-header">
-  <div class="logo">
-    <div class="sponge-icon"></div>
-    <span>Scrub Dusters</span>
-  </div>
-  <nav>
-    <a href="index.html#home">Home</a>
-    <a href="index.html#booking">Book</a>
-    <a href="carwashes.html">Car Washes</a>
-    <a href="reviews.html">Reviews</a>
-    <a href="payments.html">Payments</a>
-    <a href="policies.html">Policies</a>
-    <a href="about.html">About</a>
-    <a href="owner-dashboard-secret.html">Dashboard</a>
-  </nav>
-</header>
+  <label>
+    Wash Type
+    <select id="booking-wash" required>
+      <option value="">Select wash</option>
+      <option>Basic Wash</option>
+      <option>Wash & Wax</option>
+      <option>Deep Clean</option>
+    </select>
+  </label>
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Scrub Dusters</h1>
-    <p>Local car wash service with simple pricing and clean results.</p>
-    <div class="hero-buttons">
-      <a class="btn primary" href="#booking">Book a Wash</a>
-      <a class="btn secondary" href="carwashes.html">View Services</a>
-    </div>
-  </div>
-</section>
+  <label>
+    Day
+    <select id="booking-day" required>
+      <option value="">Select day</option>
+      <option>Monday</option>
+      <option>Tuesday</option>
+      <option>Wednesday</option>
+      <option>Thursday</option>
+      <option>Friday</option>
+      <option>Saturday</option>
+      <option>Sunday</option>
+    </select>
+  </label>
 
-<section class="section" id="booking">
-  <h2>Book a Car Wash</h2>
-  <p>Choose your wash, day and time. Bookings are saved to a real system.</p>
+  <label>
+    Time
+    <select id="booking-time" required>
+      <option value="">Select time</option>
+    </select>
+  </label>
 
-  <form id="booking-form" class="card">
-    <label>
-      Name
-      <input id="booking-name" required>
-    </label>
+  <label>
+    Tip (optional)
+    <input id="booking-tip" type="number" min="0" step="0.50" placeholder="0.00">
+  </label>
 
-    <label>
-      Car Type
-      <input id="booking-car" required>
-    </label>
+  <label>
+    Notes (optional)
+    <textarea id="booking-notes"></textarea>
+  </label>
 
-    <label>
-      Wash Type
-      <select id="booking-wash" required>
-        <option value="">Select wash</option>
-        <option>Basic Wash</option>
-        <option>Wash & Wax</option>
-        <option>Deep Clean</option>
-      </select>
-    </label>
+  <button class="btn primary" type="submit">Submit Booking</button>
 
-    <label>
-      Day
-      <select id="booking-day" required>
-        <option value="">Select day</option>
-        <option>Monday</option>
-        <option>Tuesday</option>
-        <option>Wednesday</option>
-        <option>Thursday</option>
-        <option>Friday</option>
-        <option>Saturday</option>
-        <option>Sunday</option>
-      </select>
-    </label>
+  <p id="booking-message" class="form-message"></p>
 
-    <label>
-      Time
-      <select id="booking-time" required>
-        <option value="">Select time</option>
-      </select>
-    </label>
-
-    <label>
-      Tip (optional)
-      <input id="booking-tip" type="number" min="0" step="0.50" placeholder="0.00">
-    </label>
-
-    <label>
-      Notes (optional)
-      <textarea id="booking-notes"></textarea>
-    </label>
-
-    <button class="btn primary" type="submit">Submit Booking</button>
-
-    <p id="booking-message" class="form-message"></p>
-  </form>
-</section>
-
-<section class="section" id="contact">
-  <h2>Contact</h2>
-  <p>Use this form for general questions or special requests.</p>
-
-  <form id="contact-form" class="card">
-    <label>
-      Your Name
-      <input id="contact-name" required>
-    </label>
-    <label>
-      Your Message
-      <textarea id="contact-message" required></textarea>
-    </label>
-    <button class="btn primary" type="submit">Send</button>
-    <p id="contact-message-status" class="form-message"></p>
-  </form>
-</section>
-
-<footer class="site-footer">
-  <p>Scrub Dusters © <span id="year"></span></p>
-</footer>
-
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
-
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyB-Hyw9HKt1GVm1XuSzSMqfHyqxAsoqUis",
-    authDomain: "scrub-dusters.firebaseapp.com",
-    projectId: "scrub-dusters",
-    storageBucket: "scrub-dusters.firebasestorage.app",
-    messagingSenderId: "947760364992",
-    appId: "1:947760364992:web:1e42455cb5455bfe01dc25"
-  };
-
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+  <a id="pay-now-link" class="btn secondary" href="https://settleup.starlingbank.com/cycle-vote-twirl" target="_blank" style="display:none;">
+    Pay Online Now
+  </a>
+</form>
