@@ -13,19 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const daySelect = document.getElementById("booking-day");
   const timeSelect = document.getElementById("booking-time");
-  const baseTimes = ["09:00", "10:30", "12:00", "13:30", "15:00", "16:30"];
-
-  if (daySelect && timeSelect) {
-    daySelect.addEventListener("change", () => {
-      timeSelect.innerHTML = '<option value="">Select time</option>';
-      baseTimes.forEach(t => {
-        const opt = document.createElement("option");
-        opt.value = t;
-        opt.textContent = t;
-        timeSelect.appendChild(opt);
-      });
-    });
-  }
 
   if (bookingForm) {
     bookingForm.addEventListener("submit", async (e) => {
